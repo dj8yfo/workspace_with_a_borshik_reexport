@@ -1,7 +1,6 @@
-use reexporter::borsh::{BorshDeserialize, BorshSchema, BorshSerialize};
+use borsh::{BorshDeserialize, BorshSchema, BorshSerialize};
 
 #[derive(BorshSerialize, BorshDeserialize, BorshSchema, PartialEq, Debug)]
-#[borsh(crate = "reexporter::borsh")]
 struct B {
     x: u64,
     y: i32,
@@ -9,7 +8,6 @@ struct B {
 }
 
 #[derive(BorshSerialize, BorshDeserialize, BorshSchema, PartialEq, Debug)]
-#[borsh(crate = "reexporter::borsh")]
 enum C {
     C1,
     C2(u64),
@@ -19,7 +17,6 @@ enum C {
 }
 
 #[derive(BorshSerialize, BorshDeserialize, BorshSchema, PartialEq, Debug)]
-#[borsh(crate = "reexporter::borsh")]
 struct D {
     x: u64,
 }
@@ -27,8 +24,8 @@ struct D {
 #[cfg(test)]
 mod tests {
 
-    use reexporter::borsh::{from_slice, to_vec};
     use super::{B, C, D};
+    use borsh::{from_slice, to_vec};
 
     use std::collections::BTreeMap;
 
@@ -58,7 +55,7 @@ mod tests {
         assert_eq!(actual_s, s);
     }
 
-    use reexporter::borsh::schema::{Definition, Fields, BorshSchema};
+    use borsh::schema::{BorshSchema, Definition, Fields};
 
     #[test]
     fn b_schema() {

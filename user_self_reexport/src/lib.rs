@@ -1,7 +1,7 @@
-use reexporter::borsh::{BorshDeserialize, BorshSchema, BorshSerialize};
+use reexporter::borsh::{self, BorshDeserialize, BorshSchema, BorshSerialize};
 
 #[derive(BorshSerialize, BorshDeserialize, BorshSchema, PartialEq, Debug)]
-#[borsh(crate = "reexporter::borsh")]
+#[borsh(crate = "borsh")]
 struct B {
     x: u64,
     y: i32,
@@ -9,7 +9,7 @@ struct B {
 }
 
 #[derive(BorshSerialize, BorshDeserialize, BorshSchema, PartialEq, Debug)]
-#[borsh(crate = "reexporter::borsh")]
+#[borsh(crate = "borsh")]
 enum C {
     C1,
     C2(u64),
@@ -19,7 +19,7 @@ enum C {
 }
 
 #[derive(BorshSerialize, BorshDeserialize, BorshSchema, PartialEq, Debug)]
-#[borsh(crate = "reexporter::borsh")]
+#[borsh(crate = "borsh")]
 struct D {
     x: u64,
 }
